@@ -7,5 +7,6 @@ public interface IBook {
     public void setWidth(float width);
     public void setTitle(String title);
     public void setPagesQuantity(int pagesQuantity);
+    public void setAuthor(String authors);
     public String toString();
 }

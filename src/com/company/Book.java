@@ -38,6 +38,12 @@ public class Book implements IBook{
         this.pagesQuantity = pagesQuantity;
     }
 
+    @Override
+    public void setAuthor(String authors)
+    {
+
+    }
+
     public Book(float height, float width, String title, int pagesQuantity) {
         this.height = height;
         this.width = width;

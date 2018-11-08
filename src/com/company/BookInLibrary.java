@@ -1,13 +1,27 @@
 package com.company;
 
-public class BookInLibrary {
+import java.util.Arrays;
+
+public class BookInLibrary implements IBookInLibrary{
 
     float width;
     float height;
     float price;
     int PagesQuantity;
-    String author;
+    Author[] authors;
     String title;
+
+    public Author[] getAuthors() {
+        return authors;
+    }
+
+    public void setAuthors(String author) {
+        String authors[] = author.split(",");
+        this.authors = new Author[authors.length > 0 ? authors.length : 1];
+
+        for (int i = 0; i < this.authors.length; i++)
+                this.authors[i] = new Author(authors[i].trim());
+    }
 
     public BookInLibrary() {
     }
@@ -17,7 +31,7 @@ public class BookInLibrary {
         this.height = height;
         this.price = price;
         PagesQuantity = pagesQuantity;
-        this.author = author;
+        this.setAuthors(author);
         this.title = title;
     }
 
@@ -53,12 +67,9 @@ public class BookInLibrary {
         PagesQuantity = pagesQuantity;
     }
 
-    public String getAuthor() {
-        return author;
-    }
+    @Override
+    public void setAuthor(String authors) {
 
-    public void setAuthor(String author) {
-        this.author = author;
     }
 
     public String getTitle() {
@@ -69,13 +80,47 @@ public class BookInLibrary {
         this.title = title;
     }
 
+    public BookInLibrary(String name) {
+        String[] names = name.split(",");
+    }
+
+    @Override
+    public void setState(Measurements.state state) {
+
+    }
+
+    @Override
+    public Measurements.state getState() {
+        return null;
+    }
+
+    @Override
+    public void setType(String type) {
+
+    }
+
+    @Override
+    public String getType() {
+        return null;
+    }
+
+    @Override
+    public void setStoragePlace(String storagePlace) {
+
+    }
+
+    @Override
+    public String getStoragePlace() {
+        return null;
+    }
+
     @Override
     public String toString() {
         return "BookInLibrary{" +
                 "width=" + width +
                 ", height=" + height +
                 ", PagesQuantity=" + PagesQuantity +
-                ", author='" + author + '\'' +
+                ", author='" + Arrays.toString(authors) + '\'' +
                 ", title='" + title + '\'' +
                 '}';
     }
